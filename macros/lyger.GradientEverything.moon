@@ -268,6 +268,12 @@ gradient_everything = (sub, sel, res) ->
     -- The pixel dimension of the relevant direction of gradient
     span = preset.c.hv_select == "Vertical" and bounds[4]-bounds[2] or bounds[3]-bounds[1]
 
+-- Extend bounds to video edges in the non-gradient direction
+    if preset.c.hv_select == "Vertical"
+        bounds[1], bounds[3] = 0, libLyger.meta.res_x
+    else
+        bounds[2], bounds[4] = 0, libLyger.meta.res_y
+
     --Stores how many frames between each key line
     --Index 1 is how many frames between keys 1 and 2, and so on
 
