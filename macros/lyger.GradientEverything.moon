@@ -251,7 +251,7 @@ gradient_everything = (sub, sel, res) ->
                 right, bottom = math.max(b.x+b.w, right or 0), math.max(b.y+b.h, bottom or 0)
 
         if left
-            bounds = {left-3, top-3, right+3, bottom+3}
+            bounds = {left, top, right, bottom}
         else
             logger\warn "Nothing to gradient: The selected lines didn't render to any non-transparent pixels."
             return
