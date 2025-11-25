@@ -291,14 +291,14 @@
       "description": "This will gradient everything.",
       "channels": {
         "master": {
-          "version": "2.0.3",
-          "released": "2016-04-11",
+          "version": "2.0.4",
+          "released": "2025-11-09",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "37945D7C41FBD263C133E14F0232C45006B63631"
+              "sha1": "4767b4b8e04ab049c79122891ae40f6de68d7a59"
             }
           ],
           "requiredModules": [
@@ -325,6 +325,9 @@
         }
       },
       "changelog": {
+        "2.0.4": [
+          "Now extends clips to video edges."
+        ],
         "2.0.3": [
           "Switched to DependencyControl logger module for logging.",
           "Switched to maintained Functional library."
