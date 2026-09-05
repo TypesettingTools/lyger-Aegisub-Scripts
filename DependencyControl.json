@@ -203,14 +203,14 @@
       "description": "Smoothly transforms between the first and last selected lines.",
       "channels": {
         "master": {
-          "version": "2.0.1",
+          "version": "2.0.2",
           "released": "2016-04-11",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "022A3CDF717096393A3D02E957A736821086E2FC"
+              "sha1": "7444B8FA4C42D2454DB31F6FCB012661238047E8"
             }
           ],
           "requiredModules": [
@@ -231,6 +231,9 @@
         }
       },
       "changelog": {
+        "2.0.2": [
+          "Add dropdown menu to switch between color spaces."
+        ],        
         "2.0.1": [
           "Fixed a minor isssue uncovered by Moonscript linter.",
           "Switched to maintained Functional library."
@@ -291,14 +294,14 @@
       "description": "This will gradient everything.",
       "channels": {
         "master": {
-          "version": "2.0.4",
+          "version": "2.0.5",
           "released": "2025-11-09",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "4767b4b8e04ab049c79122891ae40f6de68d7a59"
+              "sha1": "0788F597964DECDC40A6AEC6FF25274F44B8C62D"
             }
           ],
           "requiredModules": [
@@ -325,6 +328,9 @@
         }
       },
       "changelog": {
+        "2.0.5": [
+          "Add dropdown menu to switch between color spaces."
+        ],
         "2.0.4": [
           "Now extends clips to video edges."
         ],
@@ -679,14 +685,14 @@
       "fileBaseUrl": "https://raw.githubusercontent.com/TypesettingTools/lyger-Aegisub-Scripts/@{channel}/modules/@{scriptName}",
       "channels": {
         "master": {
-          "version": "2.0.3",
+          "version": "2.0.4",
           "released": "2018-04-07",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "DC0347D06CB7F85F98EB592870051FE9A119E4F0"
+              "sha1": "35BD7DA8B7662D9C5A7DD3604F20AFE35E60EFA9"
             }
           ],
           "requiredModules": [
@@ -695,11 +701,17 @@
             },
             {
               "moduleName": "karaskel"
+            },
+            {
+              "moduleName": "0x.color"
             }
           ]
         }
       },
       "changelog": {
+        "2.0.4": [
+          "Add support for more color spaces via the 0x.color library."
+        ],
         "2.0.3": [
           "Fixed some minor issues uncovered by the Moonscript linter."
         ],
@@ -715,6 +727,27 @@
           "A LibLyger instance now acts as a partial/lightweight wrapper for the subtitle interface to centralize karaskel-related tasks.",
           "Some shared functions (time_exclude, make_state_table, interpolate and match_splits) were moved into LibLyger."
         ]
+      }
+    },
+    "0x.color": {
+      "url": "@{baseUrl}",
+      "author": "The0x539",
+      "name": "color",
+      "description": "Library of interpolation functions for commonly used color spaces.",
+      "fileBaseUrl": "https://raw.githubusercontent.com/TypesettingTools/lyger-Aegisub-Scripts/@{channel}/modules/@{scriptName}",
+      "channels": {
+        "master": {
+          "version": "1.0.0",
+          "released": "2025-01-29",
+          "default": true,
+          "files": [
+            {
+              "name": ".lua",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "1DA5A21BCFE89CF40FC066DAB4C5A7DBB1DEA3CC"
+            }
+          ]
+        }
       }
     }
   }

@@ -12,17 +12,17 @@ The filename is a bit vain, perhaps, but I couldn't come up with anything else.
 DependencyControl = require("l0.DependencyControl")
 version = DependencyControl{
     name: "LibLyger",
-    version: "2.0.3",
+    version: "2.0.4",
     description: "Library of commonly used functions across all of lyger's automation scripts.",
     author: "lyger",
-    url: "http://github.com/TypesettingTools/lyger-Aegisub-Scripts",
+    url: "https://github.com/TypesettingTools/lyger-Aegisub-Scripts",
     moduleName: "lyger.LibLyger",
     feed: "https://raw.githubusercontent.com/TypesettingTools/lyger-Aegisub-Scripts/master/DependencyControl.json",
     {
-        "aegisub.util", "karaskel"
+        "aegisub.util", "karaskel", "0x.color"
     }
 }
-util = version\requireModules!
+util, line, colorutil = version\requireModules!
 
 class LibLyger
     msgs = {
@@ -289,7 +289,7 @@ class LibLyger
 
             this_state_table[i] = temp_line_table
         return this_state_table
-    interpolate: (this_table, start_state_table, end_state_table, factor, preset) ->
+    interpolate: (this_table, start_state_table, end_state_table, factor, preset, colorspace) ->
         this_current_state = {}
 
         rebuilt_text = for k, val in ipairs this_table
@@ -304,7 +304,8 @@ class LibLyger
                         when "alpha"
                             util.interpolate_alpha factor, tval_start, tval_end
                         when "color"
-                            util.interpolate_color factor, tval_start, tval_end
+                            -- util.interpolate_color factor, tval_start, tval_end
+                            colorutil["interp_#{colorspace\lower!}"] factor, tval_start, tval_end
                         when "number", "angle"
                             nstart, nend = tonumber(tval_start), tonumber(tval_end)
                             if tag_type == "angle" and preset.c.flip_rot

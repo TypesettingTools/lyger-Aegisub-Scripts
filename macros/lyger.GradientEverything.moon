@@ -57,14 +57,14 @@ TODO: Debug, debug, and keep debugging
 
 export script_name = "Gradient Everything"
 export script_description = "This will gradient everything."
-export script_version = "2.0.4"
+export script_version = "2.0.5"
 export script_namespace = "lyger.GradientEverything"
 
 DependencyControl = require "l0.DependencyControl"
 rec = DependencyControl{
     feed: "https://raw.githubusercontent.com/TypesettingTools/lyger-Aegisub-Scripts/master/DependencyControl.json",
     {
-        {"lyger.LibLyger", version: "2.0.1", url: "http://github.com/TypesettingTools/lyger-Aegisub-Scripts"},
+        {"lyger.LibLyger", version: "2.0.1", url: "https://github.com/TypesettingTools/lyger-Aegisub-Scripts"},
         {"l0.Functional", version: "0.3.0", url: "https://github.com/TypesettingTools/Functional",
          feed: "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"},
         {"SubInspector.Inspector", version: "0.6.0", url: "https://github.com/TypesettingTools/SubInspector",
@@ -92,7 +92,7 @@ tags_grouped = {
 tags_flat = list.join unpack tags_grouped
 
 -- default settings for every preset
-preset_defaults = { strip: 5, hv_select: "Horizontal", flip_rot: false, accel: 1.0,
+preset_defaults = { strip: 5, hv_select: "Horizontal", flip_rot: false, colorspace: "RGB", accel: 1.0,
                     tags: {tag, false for tag in *tags_flat }
 }
 
@@ -148,6 +148,10 @@ create_dialog = (preset) ->
           label: "Preset: "                                                            },
         { name: "preset_select", class: "dropdown",  x: 2, y: 11, width: 2, height: 1,
           items: preset_names, value: preset.section[#preset.section]                  },
+        {                        class: "label",     x: 4, y: 9, width: 2, height: 1,
+          label: "Color space:",                                                     },
+        { name: "colorspace", class: "dropdown",  x: 4, y: 10, width: 2, height: 1,
+          items: {"RGB", "LAB", "LCH", "OKLAB", "OKLCH", "XYZ"}, value: preset.c.colorspace },
         { name: "preset_modify", class: "dropdown",  x: 4, y: 11, width: 2, height: 1,
           items: {"Load", "Save", "Delete", "Rename"}, value: "Load" }
     }
@@ -367,7 +371,7 @@ gradient_everything = (sub, sel, res) ->
 
             -- Interpolate all the relevant parameters and insert
             text = LibLyger.interpolate this_table, start_state_table, end_state_table,
-                                        factor, preset
+                                        factor, preset, preset.c.colorspace
             this_line.comment = false
 
             -- Forcibly add \pos

@@ -79,14 +79,14 @@ iclip support
 
 export script_name = "Frame-by-frame transform"
 export script_description = "Smoothly transforms between the first and last selected lines."
-export script_version = "2.0.1"
+export script_version = "2.0.2"
 export script_namespace = "lyger.FbfTransform"
 
 DependencyControl = require "l0.DependencyControl"
 rec = DependencyControl{
     feed: "https://raw.githubusercontent.com/TypesettingTools/lyger-Aegisub-Scripts/master/DependencyControl.json",
     {
-        {"lyger.LibLyger", version: "2.0.0", url: "http://github.com/TypesettingTools/lyger-Aegisub-Scripts"},
+        {"lyger.LibLyger", version: "2.0.0", url: "https://github.com/TypesettingTools/lyger-Aegisub-Scripts"},
         {"l0.Functional", version: "0.3.0", url: "https://github.com/TypesettingTools/ASSFoundation",
          feed: "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"},
     }
@@ -109,7 +109,7 @@ tags_grouped = {
 tags_flat = list.join unpack tags_grouped
 
 -- default settings for every preset
-preset_defaults = { skiptext: false, flip_rot: false, accel: 1.0,
+preset_defaults = { skiptext: false, flip_rot: false, colorspace: "RGB", accel: 1.0,
                     tags: {tag, false for tag in *tags_flat }
 }
 
@@ -146,7 +146,11 @@ create_dialog = (preset) ->
         { name: "preset_select", class: "dropdown",  x: 2, y: 11, width: 2, height: 1,
           items: preset_names, value: preset.section[#preset.section]                  },
         { name: "preset_modify", class: "dropdown",  x: 4, y: 11, width: 2, height: 1,
-          items: {"Load", "Save", "Delete", "Rename"}, value: "Load" }
+          items: {"Load", "Save", "Delete", "Rename"}, value: "Load" },
+        {                        class: "label",     x: 0, y: 12, width: 2, height: 1,
+          label: "Color space: "                                                            },
+        { name: "colorspace", class: "dropdown",  x: 2, y: 12, width: 2, height: 1,
+          items: {"RGB", "LAB", "LCH", "OKLAB", "OKLCH", "XYZ"}, value: preset.c.colorspace },                  
     }
 
     -- generate tag checkboxes
@@ -339,7 +343,7 @@ frame_transform = (sub, sel, res) ->
 
         --Interpolate all the relevant parameters and insert
         this_line.text = LibLyger.interpolate this_table, start_state_table, end_state_table,
-                                              factor, preset
+                                              factor, preset, preset.c.colorspace
         sub[sel[i]] = this_line
 
 
