@@ -210,7 +210,7 @@
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "022A3CDF717096393A3D02E957A736821086E2FC"
+              "sha1": "0A23E5B82D090525C5A21E9D2D6D44FBB9399475"
             }
           ],
           "requiredModules": [
@@ -231,6 +231,9 @@
         }
       },
       "changelog": {
+        "2.0.2": [
+          "Fixed a bug that caused last used presets to not save properly."
+        ],
         "2.0.1": [
           "Fixed a minor isssue uncovered by Moonscript linter.",
           "Switched to maintained Functional library."
@@ -298,7 +301,7 @@
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "4767b4b8e04ab049c79122891ae40f6de68d7a59"
+              "sha1": "0D9ABA9C1E535868BCBCB7A7A27EC8A0766AC07C"
             }
           ],
           "requiredModules": [
@@ -325,6 +328,9 @@
         }
       },
       "changelog": {
+        "2.0.5": [
+          "Fixed a bug that caused last used presets to not save properly."
+        ],
         "2.0.4": [
           "Now extends clips to video edges."
         ],

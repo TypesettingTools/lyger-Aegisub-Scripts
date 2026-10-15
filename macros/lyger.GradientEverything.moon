@@ -57,7 +57,7 @@ TODO: Debug, debug, and keep debugging
 
 export script_name = "Gradient Everything"
 export script_description = "This will gradient everything."
-export script_version = "2.0.4"
+export script_version = "2.0.5"
 export script_namespace = "lyger.GradientEverything"
 
 DependencyControl = require "l0.DependencyControl"
@@ -162,7 +162,7 @@ create_dialog = (preset) ->
 
 save_preset = (preset, res) ->
     preset\import res, nil, true
-    if res.__class != DependencyControl.ConfigHandler
+    if res.__class != DependencyControl.ConfigHandler and res.__class != DependencyControl.ConfigView
         preset.c.tags[k] = res[k] for k in *tags_flat
     preset\write!
 
