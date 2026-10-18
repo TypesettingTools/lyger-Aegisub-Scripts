@@ -162,7 +162,7 @@ create_dialog = (preset) ->
 
 save_preset = (preset, res) ->
     preset\import res, nil, true
-    if res.__class != DependencyControl.ConfigHandler and res.__class != DependencyControl.ConfigView
+    unless res.__class
         preset.c.tags[k] = res[k] for k in *tags_flat
     preset\write!
 
