@@ -79,7 +79,7 @@ iclip support
 
 export script_name = "Frame-by-frame transform"
 export script_description = "Smoothly transforms between the first and last selected lines."
-export script_version = "2.0.1"
+export script_version = "2.0.2"
 export script_namespace = "lyger.FbfTransform"
 
 DependencyControl = require "l0.DependencyControl"
@@ -159,7 +159,7 @@ create_dialog = (preset) ->
 
 save_preset = (preset, res) ->
     preset\import res, nil, true
-    if res.__class != DependencyControl.ConfigHandler
+    unless res.__class
         preset.c.tags[k] = res[k] for k in *tags_flat
     preset\write!
 

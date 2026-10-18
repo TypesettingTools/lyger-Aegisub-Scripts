@@ -203,14 +203,14 @@
       "description": "Smoothly transforms between the first and last selected lines.",
       "channels": {
         "master": {
-          "version": "2.0.1",
-          "released": "2016-04-11",
+          "version": "2.0.2",
+          "released": "2026-10-18",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "022A3CDF717096393A3D02E957A736821086E2FC"
+              "sha1": "FF5A29515096E7031DE8F29994E4B91C652D7BB1"
             }
           ],
           "requiredModules": [
@@ -231,6 +231,9 @@
         }
       },
       "changelog": {
+        "2.0.2": [
+          "Fixed a bug that caused last used presets to not save properly."
+        ],
         "2.0.1": [
           "Fixed a minor isssue uncovered by Moonscript linter.",
           "Switched to maintained Functional library."
@@ -291,14 +294,14 @@
       "description": "This will gradient everything.",
       "channels": {
         "master": {
-          "version": "2.0.4",
-          "released": "2025-11-09",
+          "version": "2.0.5",
+          "released": "2026-10-18",
           "default": true,
           "files": [
             {
               "name": ".moon",
               "url": "@{fileBaseUrl}@{fileName}",
-              "sha1": "4767b4b8e04ab049c79122891ae40f6de68d7a59"
+              "sha1": "2C5FDA4DBD82908D5B9C86CC9691DFF923064563"
             }
           ],
           "requiredModules": [
@@ -325,6 +328,9 @@
         }
       },
       "changelog": {
+        "2.0.5": [
+          "Fixed a bug that caused last used presets to not save properly."
+        ],
         "2.0.4": [
           "Now extends clips to video edges."
         ],
